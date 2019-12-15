@@ -1,4 +1,9 @@
 from django import forms
 
+from .models import Hashtag
+
 class HashtagForm(forms.ModelForm):
-  text = forms.CharField(label='Hashtag', max_length=100)
+
+    class Meta:
+        model = Hashtag
+        fields = ('text',)

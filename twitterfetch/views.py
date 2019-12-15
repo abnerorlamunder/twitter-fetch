@@ -9,6 +9,7 @@ def hashtag_list(request):
   hashtags = Hashtag.objects.order_by('created_date')
   if request.method == "POST":
     form = HashtagForm(request.POST)
+    print(form)
     if form.is_valid():
       hashtag = form.save(commit=False)
       hashtag.save()

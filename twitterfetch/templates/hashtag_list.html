@@ -12,16 +12,20 @@
             <h1><a href="/">Twitter Fetch</a></h1>
         </div>
         <form method="POST" class="form-inline">{% csrf_token %}
-            {{form.as_p}}
             <div class="form-group mb-2">
                 <label for="text">Nova Hashtag</label>
                 <input id="text" class="form-control" type="text" name="text" maxlength="100" required>
             </div>
+            {{ form }}
             <button type="submit" class="btn btn-primary mb-2">Adicionar</button>
         </form>
-        {% for hashtag in hashtags %}
-        {{ hashtag }}
-        {% endfor %}
+        <ul>
+            {% for hashtag in hashtags %}
+            <li>
+                {{ hashtag }}
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 
