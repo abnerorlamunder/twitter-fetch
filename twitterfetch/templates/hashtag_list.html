@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>Twitter Fetch</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1><a href="/">Twitter Fetch</a></h1>
+        </div>
+        <form method="POST" class="form-inline">{% csrf_token %}
+            {{form.as_p}}
+            <div class="form-group mb-2">
+                <label for="text">Nova Hashtag</label>
+                <input id="text" class="form-control" type="text" name="text" maxlength="100" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Adicionar</button>
+        </form>
+        {% for hashtag in hashtags %}
+        {{ hashtag }}
+        {% endfor %}
+    </div>
+</body>
+
+</html>
