@@ -11,21 +11,48 @@
         <div>
             <h1><a href="/">Twitter Fetch</a></h1>
         </div>
-        <form method="POST" class="form-inline">{% csrf_token %}
-            <div class="form-group mb-2">
-                <label for="text">Nova Hashtag</label>
-                <input id="text" class="form-control" type="text" name="text" maxlength="100" required>
-            </div>
-            {{ form }}
-            <button type="submit" class="btn btn-primary mb-2">Adicionar</button>
-        </form>
-        <ul>
-            {% for hashtag in hashtags %}
-            <li>
-                {{ hashtag }}
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="col-md-6">
+            <form method="POST" class="form-inline">{% csrf_token %}
+                <div class="form-group mb-2">
+                    <label for="text">Nova Hashtag</label>
+                    <input id="text" class="form-control" type="text" name="text" maxlength="100" required>
+                </div>
+                {{ form }}
+                <button type="submit" class="btn btn-primary mb-2">Adicionar</button>
+            </form>
+            <ul>
+                {% for hashtag in hashtags %}
+                <li>
+                    {{ hashtag }} <a href="{% url 'hashtag_delete' hashtag.id %}">Excluir</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <table style="width: 100%">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Tweet</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tweet in tweets %}
+                    <tr>
+                        <td>
+                            {{tweet.user.name}}
+                        </td>
+                        <td>
+                            {{tweet.text}}
+                        </td>
+                        <td>
+                            {{tweet.created_at}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </div>
     </div>
 </body>
 
