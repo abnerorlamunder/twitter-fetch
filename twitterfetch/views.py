@@ -1,3 +1,4 @@
+import requests
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Hashtag
@@ -6,6 +7,11 @@ from django.shortcuts import redirect
 from django.views.generic.edit import DeleteView
 import tweepy
 from django.urls import reverse_lazy
+
+def index(request):
+    r = requests.get('http://httpbin.org/status/418')
+    print(r.text)
+    return HttpResponse('<pre>' + r.text + '</pre>')
 
 # Create your views here.
 def hashtag_list(request):
