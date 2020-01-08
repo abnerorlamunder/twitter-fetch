@@ -1,1 +1,1 @@
-web: gunicorn twitterfetch:app
+web: gunicorn twitterfetch.wsgi --log-file -
